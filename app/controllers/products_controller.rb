@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to product_path(@product.list)
+    redirect_to product_path, status: :see_other
   end
 
   private
