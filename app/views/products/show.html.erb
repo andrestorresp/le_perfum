@@ -1,7 +1,13 @@
-<div class="container">
-  <div class="card-product-infos">
-    <%#= cl_image_tag @product.photo.key, height: 400, crop: :scale if @product.photo.attached? %>
-    <h2>Product name</h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
+<div class="card-trip">
+  <div class="card">
+  <%= cl_image_tag @product.photo.key %>
+  </div>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= @product.name %></h2>
+      <p><%= @product.description %></p>
+    </div>
+    <h2 class="card-trip-pricing">£<%= number_to_currency(@product.price) %></h2>
+    <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" if current_user.photo.key? %>
   </div>
 </div>
