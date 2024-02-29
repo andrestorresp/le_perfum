@@ -6,16 +6,17 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @products = Product.new
+    @product = Product.new
   end
 
   def show; end
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
     # @product.list = @list
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to products_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +40,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :user_id)
+    params.require(:product).permit(:name, :description, :price, :photo)
   end
 
   def set_product
