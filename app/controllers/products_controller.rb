@@ -16,18 +16,22 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
+    # @product.list = @list
     if @product.save
-      redirect_to product_path(@product), notice: 'Producto creado exitosamente.'
+      redirect_to products_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    # Define la lógica para editar un producto si es necesario
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
+
     if @product.update(product_params)
       redirect_to product_path(@product), notice: 'Producto actualizado exitosamente.'
     else
@@ -43,7 +47,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :user_id)
+    params.require(:product).permit(:name, :description, :price, :photo)
   end
 
   def set_product
