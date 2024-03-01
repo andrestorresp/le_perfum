@@ -52,8 +52,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-
-  # def set_product
-  #   @product = Product.find(params[:product_id])
-  # end
 end

@@ -7,7 +7,12 @@
       <h2><%= @product.name %></h2>
       <p><%= @product.description %></p>
     </div>
-    <h2 class="card-trip-pricing">£<%= number_to_currency(@product.price) %></h2>
     <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" if current_user.photo.key? %>
+    Vendedor: <%= current_user.email %>
+    <h2 class="card-trip-pricing">Price: <%= number_to_currency(@product.price) %></h2>
+    <%= link_to "Editar", edit_product_path(@product), class: "btn btn-outline-primary" %>
+
+
   </div>
+
 </div>
