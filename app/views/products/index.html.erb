@@ -34,7 +34,6 @@
       <div class="collection-filter__item collection-filter__item--sort float-end">
         <select class="form-select form-select-sm" id="SortBy" name="SortBy" data-default-sortby="best-selling">
           <option value="title-ascending" selected disabled hidden>Ordenar por...</option>
-          <option value="best-selling">Más vendidos</option>
           <option value="price-ascending">Precio: menor a mayor</option>
           <option value="price-descending">Precio: mayor a menor</option>
           <option value="created-ascending">Fecha: antiguo(a) a reciente</option>
@@ -49,9 +48,9 @@
 
 <%# card %>
 <div class="container pt-3">
-  <div class="row my-2">
+  <div class="row my-2" id="productContainer">
     <% @products.each do |product| %>
-      <div class="col-12 col-md-4 mb-4" data-aos="zoom-in">
+      <div class="col-12 col-md-4 mb-4 product-item" data-aos="zoom-in" data-date="<%= product.created_at %>" data-price="<%= product.price %>">
         <div class="card card-index">
           <%= cl_image_tag product.photo.key, alt: product.name, class: 'card-img-top rounded-top' if product.photo.present? %>
           <div class="card-body">
@@ -71,6 +70,9 @@
               <%# Para reusar al momento de eliminar %>
               <%# <%= link_to 'delete this product', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌¿Are you sure you want to delete this product?❌' }, class: 'btn btn-light' %>
             </div>
+            <div style="margin-top: 10px;">
+              <%= link_to 'Comprar', product_path(product) , class: 'btn btn-primary'%>
+            </div>
           </div>
         </div>
       </div>
@@ -78,8 +80,50 @@
   </div>
 </div>
 
+<%# funcion de orden en precio y fecha %>
 <script>
   $(document).ready(function() {
+    $("#SortBy").change(function() {
+      var sortBy = $(this).val();
+      if (sortBy == "price-descending") {
+        sortProductsDescendingByPrice();
+      } else if (sortBy == "price-ascending") {
+        sortProductsAscendingByPrice();
+      } else if (sortBy == "created-descending") {
+        sortProductsDescendingByDate();
+      } else if (sortBy == "created-ascending") {
+        sortProductsAscendingByDate();
+      }
+    });
+
+    function sortProductsDescendingByPrice() {
+      var sortedItems = $(".product-item").sort(function(a, b) {
+        return $(b).data("price") - $(a).data("price");
+      });
+      $("#productContainer").html(sortedItems);
+    }
+
+    function sortProductsAscendingByPrice() {
+      var sortedItems = $(".product-item").sort(function(a, b) {
+        return $(a).data("price") - $(b).data("price");
+      });
+      $("#productContainer").html(sortedItems);
+    }
+
+    function sortProductsDescendingByDate() {
+      var sortedItems = $(".product-item").sort(function(a, b) {
+        return new Date($(b).data("date")) - new Date($(a).data("date"));
+      });
+      $("#productContainer").html(sortedItems);
+    }
+
+    function sortProductsAscendingByDate() {
+      var sortedItems = $(".product-item").sort(function(a, b) {
+        return new Date($(a).data("date")) - new Date($(b).data("date"));
+      });
+      $("#productContainer").html(sortedItems);
+    }
+
     $(".more-btn").click(function() {
       $(this).closest(".card-body").find(".description").hide();
       $(this).closest(".card-body").find(".full-description").show();
@@ -91,4 +135,6 @@
     });
   });
 </script>
+<%# funcion de orden en precio y fecha %>
+
 <%# card %>
