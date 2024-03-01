@@ -1,0 +1,54 @@
+.card-trip {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px; /* Añadir un espacio adicional alrededor del card */
+}
+
+.card-trip .card {
+  border-radius: 10px; /* Redondear las esquinas del card */
+  overflow: hidden; /* Ocultar cualquier contenido que desborde del card */
+}
+
+.card-trip .card img {
+  width: 25%; /* Hacer que la imagen llene completamente el card */
+  height: auto; /* Permitir que la altura de la imagen se ajuste automáticamente */
+  display: block; /* Hacer que la imagen sea un elemento de bloque */
+}
+
+.card-trip > img {
+  height: 380px; /* Altura de la imagen */
+  width: 380px; /* Ancho de la imagen */
+  object-fit: cover; /* Ajustar la imagen para cubrir el espacio asignado */
+  margin-bottom: 20px; /* Añadir margen inferior para separar la imagen del resto del contenido */
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.description{
+  height: 150px;
+}
