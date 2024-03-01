@@ -1,0 +1,318 @@
+diff --git a/app/assets/stylesheets/components/_body.scss b/app/assets/stylesheets/components/_body.scss
+index 3be45d5..c233fab 100644
+--- a/app/assets/stylesheets/components/_body.scss
++++ b/app/assets/stylesheets/components/_body.scss
+@@ -1,5 +1,3 @@
+ body{
+   background: linear-gradient(to top left, rgb(0, 22, 0), rgb(0, 0, 0) );
+-  min-height: 100vh;
+-  position: relative;
+ }
+diff --git a/app/assets/stylesheets/components/_btn.scss b/app/assets/stylesheets/components/_btn.scss
+deleted file mode 100644
+index 5187a2a..0000000
+--- a/app/assets/stylesheets/components/_btn.scss
++++ /dev/null
+@@ -1,24 +0,0 @@
+-.btn{
+-	box-shadow: 0px 1px 0px 0px #1c1b18;
+-	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+-	background-color:#000000;
+-	border-radius:15px;
+-	border:2px solid #333029;
+-	display:inline-block;
+-	cursor:pointer;
+-	color:#2b2b2b;
+-	font-family:Arial;
+-	font-size:14px;
+-	font-weight:bold;
+-	padding:12px 16px;
+-	text-decoration:none;
+-	text-shadow:0px 1px 0px #ffffff;
+-}
+-.btn:hover {
+-	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+-	background-color:#ccc2a6;
+-}
+-.btn:active {
+-	position:relative;
+-	top:1px;
+-}
+diff --git a/app/assets/stylesheets/components/_btn_index.scss b/app/assets/stylesheets/components/_btn_index.scss
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/app/assets/stylesheets/components/_card_trip.scss b/app/assets/stylesheets/components/_card_trip.scss
+index 3e4a753..59d5f75 100644
+--- a/app/assets/stylesheets/components/_card_trip.scss
++++ b/app/assets/stylesheets/components/_card_trip.scss
+@@ -48,7 +48,3 @@
+   top: -20px;
+   width: 40px;
+ }
+-
+-.description{
+-  height: 150px;
+-}
+diff --git a/app/assets/stylesheets/components/_footer.scss b/app/assets/stylesheets/components/_footer.scss
+index 62376c5..ca6a2e5 100644
+--- a/app/assets/stylesheets/components/_footer.scss
++++ b/app/assets/stylesheets/components/_footer.scss
+@@ -10,18 +10,11 @@ body{
+   height: 100px;
+   padding: 0px 50px;
+   color: rgb(255, 255, 255);
+-
+-  margin-top: 1px;
+-  position: absolute;
+-  bottom: 0;
+-  width: 100%;
+-
+   margin-top: 10px;
+   position: absolute ;
+   width: 100%;
+   bottom: 0;
+   margin-top: 25px;
+-
+ }
+ .footer-links {
+   display: flex;
+diff --git a/app/assets/stylesheets/components/_form.scss b/app/assets/stylesheets/components/_form.scss
+deleted file mode 100644
+index 6cb2822..0000000
+--- a/app/assets/stylesheets/components/_form.scss
++++ /dev/null
+@@ -1,14 +0,0 @@
+-.form-control{
+-  background-color: #e7b386;
+-  border-radius: 8px;
+-}
+-.form-control:focus{
+-  background-color: #e7b386;
+-}
+-.form-inputs {
+-  font-size: 16px;
+-  font-weight: 600;
+-}
+-.form{
+-  padding:7px 25px;
+-}
+diff --git a/app/assets/stylesheets/components/_form_card.scss b/app/assets/stylesheets/components/_form_card.scss
+deleted file mode 100644
+index 07dcc98..0000000
+--- a/app/assets/stylesheets/components/_form_card.scss
++++ /dev/null
+@@ -1,26 +0,0 @@
+-.form_card{
+-  width: 100%;
+-  height: 460px;
+-  box-shadow: 3px 4px 0px 0px #899599;
+-	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+-	background-color:#ededed;
+-	border-radius:15px;
+-	border:1px solid #d6bcd6;
+-	display:inline-block;
+-	cursor:pointer;
+-	color:#2b2b2b;
+-	font-family:Arial;
+-	font-size:17px;
+-
+-	text-decoration:none;
+-	text-shadow:0px 1px 0px #e1e2ed;
+-}
+-.form_card h2{
+-  text-align: center;
+-}
+-.form_img{
+-  max-width: 100%;
+-  height: 100%;
+-  overflow: hidden;
+-  border-radius:15px;
+-}
+diff --git a/app/assets/stylesheets/components/_index.scss b/app/assets/stylesheets/components/_index.scss
+index 0fd6c3f..e8c8f66 100644
+--- a/app/assets/stylesheets/components/_index.scss
++++ b/app/assets/stylesheets/components/_index.scss
+@@ -4,13 +4,7 @@
+ @import "form_legend_clear";
+ @import "navbar";
+ @import "footer";
+-
+-@import "form";
+-@import "btn";
+-@import "form_card";
+-
+ @import "body";
+ @import "banner_product";
+ @import "card_trip";
+ @import "container";
+-
+diff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb
+index 6327a44..1f93b3f 100644
+--- a/app/views/layouts/application.html.erb
++++ b/app/views/layouts/application.html.erb
+@@ -12,8 +12,10 @@
+ 
+   <body>
+     <%= render "shared/navbar" %>
+-    <%= yield %>
+-    <%= render "shared/flashes" %>
++    <div class="main-container">
++      <%= yield %>
++      <%= render "shared/flashes" %>
++    </div>
+     <%= render "shared/footer" %>
+   </body>
+ </html>
+diff --git a/app/views/pages/home.html.erb b/app/views/pages/home.html.erb
+index af9b965..a336ece 100644
+--- a/app/views/pages/home.html.erb
++++ b/app/views/pages/home.html.erb
+@@ -1,4 +1,4 @@
+-<div class="container main-container">
++<div class="container">
+   <h1 class="text-center text-white"></h1>
+   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+     <div class="carousel-indicators">
+diff --git a/app/views/products/index.html.erb b/app/views/products/index.html.erb
+index dba4d74..5a2a783 100644
+--- a/app/views/products/index.html.erb
++++ b/app/views/products/index.html.erb
+@@ -34,6 +34,7 @@
+       <div class="collection-filter__item collection-filter__item--sort float-end">
+         <select class="form-select form-select-sm" id="SortBy" name="SortBy" data-default-sortby="best-selling">
+           <option value="title-ascending" selected disabled hidden>Ordenar por...</option>
++          <option value="best-selling">Más vendidos</option>
+           <option value="price-ascending">Precio: menor a mayor</option>
+           <option value="price-descending">Precio: mayor a menor</option>
+           <option value="created-ascending">Fecha: antiguo(a) a reciente</option>
+@@ -48,9 +49,9 @@
+ 
+ <%# card %>
+ <div class="container pt-3">
+-  <div class="row my-2" id="productContainer">
++  <div class="row my-2">
+     <% @products.each do |product| %>
+-      <div class="col-12 col-md-4 mb-4 product-item" data-aos="zoom-in" data-date="<%= product.created_at %>" data-price="<%= product.price %>">
++      <div class="col-12 col-md-4 mb-4" data-aos="zoom-in">
+         <div class="card card-index">
+           <%= cl_image_tag product.photo.key, alt: product.name, class: 'card-img-top rounded-top' if product.photo.present? %>
+           <div class="card-body">
+@@ -70,9 +71,6 @@
+               <%# Para reusar al momento de eliminar %>
+               <%# <%= link_to 'delete this product', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌¿Are you sure you want to delete this product?❌' }, class: 'btn btn-light' %>
+             </div>
+-            <div style="margin-top: 10px;">
+-              <%= link_to 'Comprar', product_path(product) , class: 'btn btn-primary'%>
+-            </div>
+           </div>
+         </div>
+       </div>
+@@ -80,50 +78,8 @@
+   </div>
+ </div>
+ 
+-<%# funcion de orden en precio y fecha %>
+ <script>
+   $(document).ready(function() {
+-    $("#SortBy").change(function() {
+-      var sortBy = $(this).val();
+-      if (sortBy == "price-descending") {
+-        sortProductsDescendingByPrice();
+-      } else if (sortBy == "price-ascending") {
+-        sortProductsAscendingByPrice();
+-      } else if (sortBy == "created-descending") {
+-        sortProductsDescendingByDate();
+-      } else if (sortBy == "created-ascending") {
+-        sortProductsAscendingByDate();
+-      }
+-    });
+-
+-    function sortProductsDescendingByPrice() {
+-      var sortedItems = $(".product-item").sort(function(a, b) {
+-        return $(b).data("price") - $(a).data("price");
+-      });
+-      $("#productContainer").html(sortedItems);
+-    }
+-
+-    function sortProductsAscendingByPrice() {
+-      var sortedItems = $(".product-item").sort(function(a, b) {
+-        return $(a).data("price") - $(b).data("price");
+-      });
+-      $("#productContainer").html(sortedItems);
+-    }
+-
+-    function sortProductsDescendingByDate() {
+-      var sortedItems = $(".product-item").sort(function(a, b) {
+-        return new Date($(b).data("date")) - new Date($(a).data("date"));
+-      });
+-      $("#productContainer").html(sortedItems);
+-    }
+-
+-    function sortProductsAscendingByDate() {
+-      var sortedItems = $(".product-item").sort(function(a, b) {
+-        return new Date($(a).data("date")) - new Date($(b).data("date"));
+-      });
+-      $("#productContainer").html(sortedItems);
+-    }
+-
+     $(".more-btn").click(function() {
+       $(this).closest(".card-body").find(".description").hide();
+       $(this).closest(".card-body").find(".full-description").show();
+@@ -135,6 +91,4 @@
+     });
+   });
+ </script>
+-<%# funcion de orden en precio y fecha %>
+-
+ <%# card %>
+diff --git a/app/views/products/new.html.erb b/app/views/products/new.html.erb
+index 81c6ac4..4a20e4a 100644
+--- a/app/views/products/new.html.erb
++++ b/app/views/products/new.html.erb
+@@ -1,26 +1,20 @@
+-<div class="container py-5">
+-  <div class="row justify-content-center">
+-    <div class= "col-12 col-md-6 ">
+-        <div class="form_card">
+-          <img src="https://angelnumber.org/wp-content/uploads/2021/04/Perfume-Dream-Meaning-700x400.jpg" alt="" class="form_img">
+-        </div>
+-      </div>
+-    <div class= "col-12 col-md-6 ">
+-      <div class="form_card p-3">
+-        <h2>Añadir nuevo producto</h2>
+-        <%= simple_form_for(@product) do |f| %>
++<div class="container">
++  <div class="card">
++    <div class="card-body">
++      <%= simple_form_for(@product) do |f| %>
+         <%= f.error_notification %>
++
+         <div class="form-inputs">
+           <%= f.input :name, required: true, autofocus: true, input_html: { autocomplete: "name" } %>
+           <%= f.input :description, required: true, autofocus: true, input_html: { autocomplete: "description" } %>
+           <%= f.input :price, required: true, autofocus: true, input_html: { autocomplete: "price" } %>
+           <%= f.input :photo, as: :file %>
+         </div>
++
+         <div class="form-actions text-center">
+           <%= f.button :submit, "Create product", class: "btn btn-primary" %>
+         </div>
+-        <% end %>
+-      </div>
++      <% end %>
+     </div>
+   </div>
+ </div>
+diff --git a/app/views/shared/_navbar.html.erb b/app/views/shared/_navbar.html.erb
+index d5bc84e..1f4c487 100644
+--- a/app/views/shared/_navbar.html.erb
++++ b/app/views/shared/_navbar.html.erb
+@@ -27,7 +27,7 @@
+               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached? %>
+               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                 <%= link_to "Action", "#", class: "dropdown-item" %>
+-                <%= link_to "Another action", "#", class: "dropdown-item" %>
++                <%= link_to "Product", "#", class: "dropdown-item" %>
+                 <%= link_to "Log out", destroy_user_session_path , class: "dropdown-item", data: {turbo_method: :delete} %>
+                 <%= link_to "Edit user", edit_user_registration_path , class: "dropdown-item" %>
+               </div>
