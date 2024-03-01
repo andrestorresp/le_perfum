@@ -124,17 +124,19 @@
       $("#productContainer").html(sortedItems);
     }
 
-    $(".more-btn").click(function() {
+    // Delegar eventos de clic para "Ver más" y "Ver menos"
+    $("#productContainer").on("click", ".more-btn", function() {
       $(this).closest(".card-body").find(".description").hide();
       $(this).closest(".card-body").find(".full-description").show();
     });
 
-    $(".less-btn").click(function() {
-      $(this).closest(".card-body").find(".description").show();
+    $("#productContainer").on("click", ".less-btn", function() {
       $(this).closest(".card-body").find(".full-description").hide();
+      $(this).closest(".card-body").find(".description").show();
     });
   });
 </script>
+
 <%# funcion de orden en precio y fecha %>
 
 <%# card %>
