@@ -1,2 +1,22 @@
-// Import page-specific CSS files here.
+// transparecnia en la busqueda
+.bg-transparent {
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+// transparecnia en la busqueda
+
+
+
+// efecto del card
+.card-index {
+  width: 18rem;
+  min-height: 300px;
+  transition: all 400ms ease;
+}
+
+.card-index:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2%);
+}
+// efecto del card
+
 @import "home";
