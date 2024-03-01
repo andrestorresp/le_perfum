@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # Define la lógica para mostrar un producto si es necesario
+    @product = Product.find(params[:id])
   end
 
   def create
