@@ -1,3 +1,7 @@
+body{
+  min-height: 100vh;
+  position: relative;
+}
 .footer {
   background: black;
   display: flex;
@@ -6,10 +10,18 @@
   height: 100px;
   padding: 0px 50px;
   color: rgb(255, 255, 255);
+
   margin-top: 1px;
   position: absolute;
   bottom: 0;
   width: 100%;
+
+  margin-top: 10px;
+  position: absolute ;
+  width: 100%;
+  bottom: 0;
+  margin-top: 25px;
+
 }
 .footer-links {
   display: flex;
