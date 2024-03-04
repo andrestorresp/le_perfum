@@ -1,18 +1,119 @@
-<div class="card-trip">
-  <div class="card">
-  <%= cl_image_tag @product.photo.key %>
-  </div>
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= @product.name %></h2>
-      <p><%= @product.description %></p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-usuario"> <!-- Añade la clase h-100 aquí -->
+          <img src="<%= cl_image_path(@product.photo.key) %>" class="card-img-top" alt="...">
+        </div>
+      </div>
+
+      <div class="col-md-6 aline align-self-center">
+        <div class="card card-shop h-100"> <!-- Añade la clase h-100 aquí -->
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <img src="<%= cl_image_path(current_user.photo.key) %>" class="rounded-circle me-3" alt="Foto de perfil" style="width: 40px; height: 40px; object-fit: cover;">
+              <h5 class="card-title mb-0">
+                <%= current_user.email %>
+                <i class="fa-solid fa-circle-check"></i>
+              </h5>
+            </div>
+            <!-- Añadir espacio -->
+            <div style="margin-top: 20px;"></div>
+            <!-- Fin espacio -->
+            <div class="d-flex align-items-center">
+              <div>
+                <h3 class="card-title fw-bold mb-0 me-3"><%= @product.name %></h3>
+              </div>
+              <div class="ms-2">
+                <%# estrella %>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <%# estrella %>
+              </div>
+            </div>
+            <p class="card-text text-align"><%= @product.description %></p>
+            <p class="card-text fw-bold">Precio del Producto: </p>
+            <p class="card-text">USD <%= number_to_currency(@product.price) %></p>
+            <p class="card-text fw-bold">Ubicación del Vendedor: </p>
+            <p class="card-text">USD <%= current_user.address %></p>
+            <div class="d-flex align-items-center">
+              <button type="button" class="button btn-link" style="padding: 0;" data-bs-toggle="modal" data-bs-target="#contactModal">
+                <i class="fas fa-duotone fa-phone me-2"></i>
+                Contactar
+              </button>
+            </div>
+            <!-- Modal de Contacto -->
+            <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Número de contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <h5 class="card-title mb-0"><%= current_user.phone_number %></h5>
+                  <div class="modal-footer">
+                    <button type="button" class="button btn-link" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fin modal de Contacto -->
+            <div style="margin-top: 30px;"></div>
+            <button type="button" class="button_comprar_ahora btn-primary" data-bs-toggle="modal" data-bs-target="#comprarModal">Comprar</button>
+          </div>
+          <!-- Modal de Compra -->
+          <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="comprarModalLabel">Información de Compra</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="comprarForm">
+                    <div class="mb-3">
+                      <label for="referencia" class="form-label">Número de Referencia:</label>
+                      <input type="text" class="form-control" id="referencia" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="comprobante" class="form-label">Adjuntar Comprobante de Pago:</label>
+                      <input type="file" class="form-control" id="comprobante" name="comprobante" accept="image/*, .pdf" required>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="submit" form="comprarForm" class="btn btn-primary" id="enviarCompra">Enviar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin modal de Compra -->
+        </div>
+      </div>
     </div>
-    <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" if current_user.photo.key? %>
-    Vendedor: <%= current_user.email %>
-    <h2 class="card-trip-pricing">Price: <%= number_to_currency(@product.price) %></h2>
-    <%= link_to "Editar", edit_product_path(@product), class: "btn btn-outline-primary" %>
-
-
   </div>
+</div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('comprarForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Evita que se envíe el formulario automáticamente
+
+      // Aquí puedes agregar cualquier lógica de procesamiento de datos, como enviar la información a un servidor
+
+      // Muestra la alerta de pago exitoso
+      alert('¡Comprobante de pago enviado exitosamente!');
+
+      // Cierra el modal
+      $('#comprarModal').modal('hide');
+    });
+  });
+</script>
+</div>
 </div>
