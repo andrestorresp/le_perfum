@@ -6,20 +6,20 @@ class CheckoutsController < ApplicationController
   end
 
   def new
-    @products = Product.new
+    @product = Product.find(params[:product_id])
+    @checkout = Checkout.new
   end
 
-  def show; end
-
   def create
-    @product = Product.new(product_params)
-    # @product.list = @list
-    if @product.save
-      redirect_to product_path(@product)
+    @checkout = Checkout.new(checkout_params)
+    if @checkout.save
+      redirect_to checkout_path(@checkout)
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+  def show; end
 
   def edit;end
 
@@ -38,8 +38,8 @@ class CheckoutsController < ApplicationController
 
   private
 
-  def product_params
-    params.require(:product).permit(:name, :description, :price, :user_id)
+  def checkout_params
+    params.require(:checkout).permit(:user_id, :product_id, :transaction_date, :price)
   end
 
   def set_product
