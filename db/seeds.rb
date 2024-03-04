@@ -12,7 +12,7 @@ Product.destroy_all
 
 # db/seeds.rb
 
-# Crear usuarios con imágenes de perfil adjuntas
+# Usuario de Vendedores
 juan = User.create!(
   email: 'juan@gmail.com',
   password: '12345678',
@@ -33,6 +33,7 @@ maria = User.create!(
 )
 maria.photo.attach(io: File.open('app/assets/images/perfiles/User_Mujer.jpg'), filename: 'User_Mujer.jpg', content_type: 'image/jpeg')
 
+# Nombre de los perfumes e imagenes
 perfumes = [
   { name: 'Sauvage', image: 'Sauvage.jpg' },
   { name: 'Vogue', image: 'Vogue.jpg' },
@@ -73,3 +74,14 @@ perfumes.each do |perfume|
   )
   product.photo.attach(image_blob)
 end
+
+# Usuario de Comprador
+carlos = User.create!(
+  email: 'carlos@gmail.com',
+  password: '12345678',
+  name: 'Carlos',
+  last_name: 'Landaeta',
+  phone_number: '987654321',
+  address: 'La Trinidad'
+)
+carlos.photo.attach(io: File.open('app/assets/images/perfiles/User_Hombre2.jpg'), filename: 'User_Hombre2.jpg', content_type: 'image/jpeg')
