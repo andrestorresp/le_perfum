@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
   # before_action :set_product, only: %i[new create]
 
   def index
-    @products = Product.all
+    #@products = Product.all
+    if params[:query].present?
+      @products = Product.perfum_search(params[:query])
+    else
+      @products = Product.all
+    end
   end
 
   def new
