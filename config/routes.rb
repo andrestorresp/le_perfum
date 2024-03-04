@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   # Rutas de productos
   resources :products do
     resources :reviews
-    resources :checkouts
+    resources :checkouts, only: %i[new create]
   end
-
+  resources :checkouts, except: %i[new create]
   # Ruta para la acción principal
 end
