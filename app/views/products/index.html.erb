@@ -73,11 +73,7 @@
             <div style="margin-top: 10px;">
               <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary' %>
             </div>
-            <% if user_signed_in? %>
-              <div style="margin-top: 10px;">
-                <%= link_to 'Comprar', product_path(product), class: 'btn btn-primary' %>
-              </div>
-            <% end %>
+            
           </div>
         </div>
       </div>
