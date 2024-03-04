@@ -8,8 +8,6 @@
           <%= f.input :name, required: true, autofocus: true, input_html: { autocomplete: "name" } %>
           <%= f.input :description, required: true, autofocus: true, input_html: { autocomplete: "description" } %>
           <%= f.input :price, required: true, autofocus: true, input_html: { autocomplete: "price" } %>
-          <%= f.input :photo, as: :file %>
-          <%= cl_image_tag @product.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if @product.photo.attached? %>
         </div>
 
         <div class="form-actions text-center">
