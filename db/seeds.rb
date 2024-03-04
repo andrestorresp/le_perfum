@@ -40,7 +40,12 @@ perfumes = [
   { name: 'Chanel', image: 'Chanel.jpg' },
   { name: 'Yves_Saint_Laurent', image: 'Yves_Saint_Laurent.jpg' },
   { name: 'Boss', image: 'Boss.jpg' },
-  { name: 'Hugo', image: 'Hugo.jpg' }
+  { name: 'Hugo', image: 'Hugo.jpg' },
+  { name: 'Armaf', image: 'Armaf.jpg' },
+  { name: 'Nautica_Voyage', image: 'Nautica_Voyage.jpg' },
+  { name: 'Lattafa', image: 'Lattafa.jpg' },
+  { name: "L'Bel_Bleu", image: "L'Bel_Bleu.jpg" }
+
 ]
 
 # Descripciones detalladas para cada perfume
@@ -53,7 +58,11 @@ descriptions = {
   'Chanel' => 'Una fragancia icónica tanto para hombres como para mujeres, con toques cítricos, jazmín y sándalo.',
   'Yves_Saint_Laurent' => 'Una fragancia atrevida y sofisticada con notas de grosella negra, rosa y vainilla.',
   'Boss' => 'Una fragancia fresca y enérgica para hombre, con toques de manzana, cítricos y sándalo.',
-  'Hugo' => 'Una fragancia moderna y urbana para hombre, con notas de menta, lavanda y vetiver.'
+  'Hugo' => 'Una fragancia moderna y urbana para hombre, con notas de menta, lavanda y vetiver.',
+  'Armaf' => 'Armaf es una marca de fragancias que ofrece una amplia gama de perfumes para hombres y mujeres. La marca es conocida por ofrecer una variedad de fragancias de alta calidad a precios asequibles. Sus perfumes abarcan una variedad de estilos y notas aromáticas, desde frescos y florales hasta amaderados y orientales.',
+  'Nautica_Voyage' => 'Es una fragancia para hombres lanzada por la marca Nautica. Es conocida por su frescura y su aroma marino, inspirado en la navegación y la aventura en el mar. Esta fragancia se caracteriza por sus notas frescas y acuáticas que evocan la sensación de la brisa marina y la libertad del océano.',
+  'Lattafa' => 'Lattafa ofrece una variedad de fragancias para hombres y mujeres, que van desde opciones dulces y afrutadas hasta fragancias más intensas y orientales. Sus perfumes suelen ser duraderos y cuentan con una excelente proyección, lo que los hace ideales para diversas ocasiones.',
+  "L'Bel_Bleu" => "L'Bel es una reconocida marca de cosméticos que ofrece una amplia gama de productos para el cuidado facial, corporal y capilar."
 }
 
 # Crear productos y adjuntar imágenes
