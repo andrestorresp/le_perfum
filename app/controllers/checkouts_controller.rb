@@ -27,21 +27,6 @@ class CheckoutsController < ApplicationController
 
   def show; end
 
-  def edit;end
-
-  def update
-    if @product.update(product_params)
-      redirect_to product_path(@product)
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @product.destroy
-    redirect_to product_path, status: :see_other
-  end
-
   private
 
   def checkout_params
