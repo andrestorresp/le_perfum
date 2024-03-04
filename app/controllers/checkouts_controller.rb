@@ -11,8 +11,14 @@ class CheckoutsController < ApplicationController
   end
 
   def create
+
     @checkout = Checkout.new(checkout_params)
-    if @checkout.save
+    @checkout.user_id = current_user.id
+    @checkout.transaction_date = Date.today
+    @product = Product.find(params[:product_id])
+    @checkout.product_id = @product.id
+    @checkout.price = @product.price
+    if @checkout.save!
       redirect_to checkout_path(@checkout)
     else
       render :new, status: :unprocessable_entity
@@ -24,7 +30,7 @@ class CheckoutsController < ApplicationController
   private
 
   def checkout_params
-    params.require(:checkout).permit(:user_id, :product_id, :transaction_date, :price)
+    params.require(:checkout).permit(:reference_info, :photo)
   end
 
   def set_product
