@@ -64,7 +64,9 @@
 
             <!-- Fin modal de Contacto -->
             <div style="margin-top: 30px;"></div>
-            <%= link_to "Comprar", new_product_checkout_path(@product), class: "button_comprar_ahora btn-primary" %>
+            <%= link_to "Comprar", new_product_checkout_path(@product), class: "button_comprar_ahora btn-primary", data: { toggle: "modal", target: "#comprarModal" } %>
+            <%# <%= link_to "Comprar", "#", class: "button_comprar_ahora btn btn-primary", id: "abrirModal" %>
+
           </div>
           <!-- Modal de Compra -->
 
