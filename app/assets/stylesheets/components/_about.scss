@@ -53,9 +53,10 @@ img {
   margin-bottom: 100px;
 }
 
-.row div:first-child {
-  margin-right: 50px;
-}
+// Se comenta porque crea un margen que descuadra las card
+// .row div:first-child {
+//   margin-right: 50px;
+// }
 
 .row .img-col {
   flex: 1 1 40%;

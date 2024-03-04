@@ -50,7 +50,7 @@
 <div class="container pt-3">
   <div class="row my-2" id="productContainer">
     <% @products.each do |product| %>
-      <div class="col-12 col-md-4 mb-4 product-item" data-aos="zoom-in" data-date="<%= product.created_at %>" data-price="<%= product.price %>">
+      <div class="col-12 col-md-4 mb-4 product-item m-0" data-aos="zoom-in" data-date="<%= product.created_at %>" data-price="<%= product.price %>">
         <div class="card card-index">
           <%= cl_image_tag product.photo.key, alt: product.name, class: 'card-img-top rounded-top' if product.photo.present? %>
           <div class="card-body">
@@ -73,7 +73,7 @@
             <div style="margin-top: 10px;">
               <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary' %>
             </div>
-            
+
           </div>
         </div>
       </div>
