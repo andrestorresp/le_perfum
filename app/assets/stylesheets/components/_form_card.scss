@@ -1,3 +1,18 @@
+:root {
+  --clr-primary: #7FBE7F;
+  --clr-secondary: #4A944A;
+}
+.form-inputs{
+  font-family: "Montserrat", sans-serif;
+  color: #1e3d1e;
+  text-shadow:0px 1px 0px #3f3f3f;
+  font-weight: 400;
+}
+.card-header{
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  color: #7FBE7F;
+}
 .form_card{
   width: 100%;
   height: auto;

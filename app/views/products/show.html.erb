@@ -125,12 +125,63 @@ function mostrarAlerta() {
               <button type="button" class="button btn-link" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
+
+          <!-- Modal de Compra -->
+          <div style="margin-top: 30px;"></div>
+          <% if current_user && current_user.id != @product.user_id %>
+            <%= link_to "Comprar", new_product_checkout_path(@product), class: "button_comprar_ahora btn-primary", data: { toggle: "modal", target: "#comprarModal" } %>
+          <% else %>
+            <%= link_to "Editar Producto", edit_product_path(@product), class: "button_comprar_ahora", data: { toggle: "modal", target: "#comprarModal" } %>
+          <% end %>
+          <!-- Fin modal de Compra -->
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
 </div>
 </div>
 </div>
 </div>
+
+
+</div>
+</div>
+
+
+<div class="row">
+  <div class="container d-flex">
+    <div class="col-12 col-sm-6">
+      <h3 class="card-header pb-3">Comentarios</h3>
+      <% if @product.reviews.empty? %>
+        <small><em class="text-white">Sé el primero en opinar acerca de este producto:</em></small>
+      <% end %>
+      <% @product.reviews.each do |review| %>
+          <div class="container form_card align-items-center justify-center pt-3">
+            <p>"<%= review.comment %>"</p>
+            <h5><strong>- <%= review.user.email %></strong></h5>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Agregar opinión</h5>
+        <%= simple_form_for [@product, @review] do |f| %>
+          <%= f.input :comment, placeholder: "Agrega tu opinión aquí..." %>
+          <%= f.submit class:"btn btn-flat" %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+

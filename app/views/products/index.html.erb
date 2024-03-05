@@ -66,12 +66,22 @@
               <button class="button less-btn">Ver menos</button>
             </div>
             <div class="d-flex justify-content-between align-items-center">
+
               <strong><%= product.price %>💲</strong> <%= "📍caracas" %></h6>
+
+              <% if user_signed_in? %>
+                <strong><%= product.price %>💲</strong> 📍 <%= current_user.address %></h6>
+              <% end %>
+
               <%# Para reusar al momento de eliminar %>
-              <%# <%= link_to 'delete this product', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌¿Are you sure you want to delete this product?❌' }, class: 'btn btn-light' %>
             </div>
             <div style="margin-top: 10px;">
-              <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary' %>
+              <% if user_signed_in? && product.user_id == current_user.id %>
+                <%= link_to 'Observar', product_path(product), class: 'button_shop btn-primary d-inline p-2' %>
+                <%= link_to 'Eliminar', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌ ¿Estás seguro de que deseas eliminar este producto? ❌' }, class: 'button_shop btn-primary d-inline p-2'%>
+              <%else%>
+                <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary d-inline p-2' %>
+              <% end %>
             </div>
           </div>
         </div>

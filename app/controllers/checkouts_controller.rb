@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @products = Product.all
   end
@@ -16,9 +17,8 @@ class CheckoutsController < ApplicationController
     @product = Product.find(params[:product_id])
     @checkout.product_id = @product.id
     @checkout.price = @product.price
-
     if @checkout.save
-      redirect_to checkout_path(@checkout)
+      redirect_to user_checkouts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,9 +34,5 @@ class CheckoutsController < ApplicationController
 
   def checkout_params
     params.require(:checkout).permit(:reference_info, :photo)
-  end
-
-  def set_product
-    @product = Product.find(params[:product_id])
   end
 end
