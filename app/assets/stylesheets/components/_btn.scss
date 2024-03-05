@@ -39,34 +39,3 @@
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-// efectos del boton comprar
-.button_shop {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button_shop:hover {
-  background-color: #0056b3;
-}
-// efectos del boton comprar
-
-.button_comprar_ahora{
-  width: 100%;
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.button_comprar_ahora:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}

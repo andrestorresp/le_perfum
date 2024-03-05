@@ -16,19 +16,16 @@
     <div class="row justify-content-center align-items-center py-3">
       <div class="col-md-6">
         <h1 class="text-light text-center mb-3">Bienvenido a Le Parfum</h1>
-        <%= form_with url: products_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Buscar productos..."
-            %>
-          <%= submit_tag "Buscar", name: "", class: "btn btn-outline-light ms-3" %>
-        <% end %>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Buscar productos..." aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">Buscar</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
 <%# Banner %>
+
 
 <%# selector %>
 <div class="container pt-3">
@@ -57,7 +54,7 @@
         <div class="card card-index">
           <%= cl_image_tag product.photo.key, alt: product.name, class: 'card-img-top rounded-top' if product.photo.present? %>
           <div class="card-body">
-            <h4 class="fw-bold"><%= product.name %></h4>
+            <h4 class="fw-bold"><%= product.name.truncate(20) %></h4> <!-- Limita el nombre del producto a 20 caracteres -->
             <div class="description">
               <p class="card-text"><%= product.description.truncate(100) %></p>
               <% if product.description.length > 100 %>
@@ -69,9 +66,13 @@
               <button class="button less-btn">Ver menos</button>
             </div>
             <div class="d-flex justify-content-between align-items-center">
+
+              <strong><%= product.price %>💲</strong> <%= "📍caracas" %></h6>
+
               <% if user_signed_in? %>
                 <strong><%= product.price %>💲</strong> 📍 <%= current_user.address %></h6>
               <% end %>
+
               <%# Para reusar al momento de eliminar %>
             </div>
             <div style="margin-top: 10px;">
@@ -82,7 +83,6 @@
                 <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary d-inline p-2' %>
               <% end %>
             </div>
-
           </div>
         </div>
       </div>
