@@ -85,22 +85,19 @@
 </div>
 
 
-
-<hr class="">
-  <div class="row">
+<div class="row">
+  <div class="container d-flex">
     <div class="col-12 col-sm-6">
-      <h3 class="text-white">Reviews</h3>
+      <h3 class="card-header pb-3">Comentarios</h3>
       <% if @product.reviews.empty? %>
-        <small><em class="text-white">Sé el primero en opinar acerca de este producto:</em></small>
+        <small><em class="">Sé el primero en opinar acerca de este producto</em></small>
       <% end %>
-      <% @product.reviews.each do |review| %>
-        <div class="container">
-          <p class="text-white"><%= review.comment %></p>
-          <p class="text-white"><%= review.user.email %></p>
-
-        </div>
-        <hr>
-      <% end %>
+        <% @product.reviews.each do |review| %>
+          <div class="container form_card align-items-center justify-center pt-3">
+            <p>"<%= review.comment %>"</p>
+            <h5><strong>- <%= review.user.email %></strong></h5>
+          </div>
+        <% end %>
     </div>
     <div class="col-12 col-sm-6">
       <div class="bg-white rounded p-3">
@@ -111,11 +108,6 @@
         <% end %>
       </div>
     </div>
+    </div>
   </div>
 </div>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-
