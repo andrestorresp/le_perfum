@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Nueva opinión</h1>
+  <%= simple_form_for [@product, @review] do |f| %>
+    <%= f.input :comment %>
+
+    <%= f.submit "Enviar opinión", class: "btn btn-primary" %>
+  <% end %>
+</div>

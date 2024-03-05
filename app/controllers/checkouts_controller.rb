@@ -1,5 +1,10 @@
 class CheckoutsController < ApplicationController
+
+  before_action :set_product
+  # before_action :set_product, only: %i[new create]
+
   before_action :authenticate_user!
+
   def index
     @products = Product.all
   end
