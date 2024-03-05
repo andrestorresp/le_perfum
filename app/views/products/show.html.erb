@@ -71,7 +71,7 @@
         <i class="fa-regular fa-circle-xmark fa-2x text-danger" data-bs-dismiss="modal" aria-label="Close"></i>
       </div>
       <div class="modal-body">
-        <form id="comprarForm" onsubmit="return false;">
+        <%# <form id="comprarForm" onsubmit="return false;">
           <div class="mb-3">
             <label for="referencia" class="form-label">Referencia</label>
             <input type="text" class="form-control" id="referencia" required>
@@ -82,7 +82,20 @@
           </div>
           <button type="submit" class="btn btn-primary" onclick="mostrarAlerta()">Enviar Comprobante</button>
 
-        </form>
+        </form> %>
+
+        <%= form_with model: [@product, @checkout] do |form| %>
+        <div class="form-inputs">
+          <%= form.label :reference_info %>
+          <%= form.text_field :reference_info, required: true, autofocus: true, class: "form-control" %>
+          <%= form.file_field :photo, as: :file %>
+        </div>
+        <div class="form-actions text-center">
+          <%= form.submit "Create Checkout", class: "btn btn-primary" %>
+          <%= link_to "Mis Checkouts", user_checkouts_path %>
+        </div>
+        <% end %>
+
       </div>
     </div>
   </div>
@@ -135,7 +148,6 @@ function mostrarAlerta() {
           <!-- Modal de Compra -->
           <div style="margin-top: 30px;"></div>
           <% if current_user && current_user.id != @product.user_id %>
-            <%= link_to "Comprar", new_product_checkout_path(@product), class: "button_comprar_ahora btn-primary", data: { toggle: "modal", target: "#comprarModal" } %>
           <% else %>
             <%= link_to "Editar Producto", edit_product_path(@product), class: "button_comprar_ahora", data: { toggle: "modal", target: "#comprarModal" } %>
           <% end %>
