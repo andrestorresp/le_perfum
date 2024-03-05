@@ -1,3 +1,4 @@
+Review.destroy_all
 Checkout.destroy_all
 User.destroy_all
 Product.destroy_all
@@ -25,33 +26,29 @@ maria.photo.attach(io: File.open('app/assets/images/perfiles/User_Mujer.jpg'), f
 
 # Nombre de los perfumes e imagenes
 perfumes = [
-  { name: 'Sauvage', image: 'Sauvage.jpg' },
-  { name: 'Vogue', image: 'Vogue.jpg' },
-  { name: 'Chanel', image: 'Chanel.jpg' },
+  { name: 'Dior_Sauvage_Elixir', image: 'Dior_Sauvage_Elixir.jpg' },
+  { name: 'Versace_Eros', image: 'Versace_Eros.jpg' },
+  { name: 'Dolce_Gabbana', image: 'Dolce_Gabbana.jpg' },
   { name: 'Yves_Saint_Laurent', image: 'Yves_Saint_Laurent.jpg' },
-  { name: 'Boss', image: 'Boss.jpg' },
-  { name: 'Hugo', image: 'Hugo.jpg' },
-  { name: 'Armaf', image: 'Armaf.jpg' },
+  { name: 'Valentino_Valentino_Assoluto', image: 'Valentino_Valentino_Assoluto.jpg' },
+  { name: 'Hugo_Boss_Bottled', image: 'Hugo_Boss_Bottled.jpg' },
+  { name: 'Armaf_Club', image: 'Armaf_Club.jpg' },
   { name: 'Nautica_Voyage', image: 'Nautica_Voyage.jpg' },
   { name: 'Lattafa', image: 'Lattafa.jpg' },
-  { name: "L'Bel_Bleu", image: "L'Bel_Bleu.jpg" }
-]
+  { name: "Giorgio_Armani", image: "Giorgio_Armani.jpg" }
 
 # Descripciones detalladas para cada perfume
 descriptions = {
-  'Sauvage' => 'Una fragancia sensual para hombres, con notas de bergamota, ámbar y pachulí.',
-  'Vogue' => 'Vogue perfume es una fragancia para mujeres que se destaca por sus notas florales y aldehídicas. ' \
-           'Al aplicar el perfume, se recomienda evitar frotar las muñecas para no romper las notas y ' \
-           'aplicarlo en puntos estratégicos como la parte trasera de las orejas, el escote, las muñecas, ' \
-           'los tobillos y la parte trasera de las rodillas',
-  'Chanel' => 'Una fragancia icónica tanto para hombres como para mujeres, con toques cítricos, jazmín y sándalo.',
-  'Yves_Saint_Laurent' => 'Una fragancia atrevida y sofisticada con notas de grosella negra, rosa y vainilla.',
-  'Boss' => 'Una fragancia fresca y enérgica para hombre, con toques de manzana, cítricos y sándalo.',
-  'Hugo' => 'Una fragancia moderna y urbana para hombre, con notas de menta, lavanda y vetiver.',
-  'Armaf' => 'Armaf es una marca de fragancias que ofrece una amplia gama de perfumes para hombres y mujeres. La marca es conocida por ofrecer una variedad de fragancias de alta calidad a precios asequibles. Sus perfumes abarcan una variedad de estilos y notas aromáticas, desde frescos y florales hasta amaderados y orientales.',
+  'Dior_Sauvage_Elixir' => 'Las notas de salida son canela, nuez moscada, cardamomo y toronja, la nota de corazón es lavanda, las notas de fondo son regaliz, sándalo, ámbar, pachulí y vetiver de Haití',
+  'Versace_Eros' => 'Dylan Blue pour femme es un tributo a la feminidad. Una fragancia intensa, sensual y refinada creada para una mujer que conoce el poder de su sensualidad y su mente. Mujeres femeninas, sexys con un fuerte poder de atracción, que dejan huella vayan dónde vayan. Esta fragancia nos aporta parte de Donatella Versace, de su seguridad y de su auto confianza.',
+  'Dolce_Gabbana' => 'Esta fragancia está diseñada para el hombre conceptual, sofisticado y masculino, que se desenvuelve en la ciudad sin pasar desapercibido. Pisa fuerte, con carácter y presencia cada día de su vida, lo mismo que su perfume, que plasma su esencia de manera auténtica y única.',
+  'Yves_Saint_Laurent' => 'El jugo de esta nueva fragancia es profundo, fresco, masculino y es un intenso fougère blanco, oscuro. Predomina una explosión olfativa de bergamota y jengibre la frescura es intensificada con las notas afrutadas de manzana verde. Seguido por una brisa suave de la salvia y el enebro, combinados con un toque de menta. El fondo de la fragancia resulta más intenso y masculino gracias a las maderas de ámbar, que refuerzan la misteriosa profundidad del olíbano y del haba tonka.',
+  'Valentino_Valentino_Assoluto' => 'Valentina, de la firma italiana Valentino, En ella, Valentino, quiere describir la esencia de la mujer que identifica su marca. Un perfil joven, elegante y con una pizca de rebeldia.',
+  'Hugo_Boss_Bottled' => 'La fragancia icónica de hombre a nivel mundial que captura la elegancia de un traje en un frasco. Es la fragancia que eligen los hombres seguros de sí mismos, elegantes, seductores y con espíritu dinámico.',
+  'Armaf_Club' => 'Armaf es una marca de fragancias que ofrece una amplia gama de perfumes para hombres y mujeres. La marca es conocida por ofrecer una variedad de fragancias de alta calidad a precios asequibles. Sus perfumes abarcan una variedad de estilos y notas aromáticas, desde frescos y florales hasta amaderados y orientales.',
   'Nautica_Voyage' => 'Es una fragancia para hombres lanzada por la marca Nautica. Es conocida por su frescura y su aroma marino, inspirado en la navegación y la aventura en el mar. Esta fragancia se caracteriza por sus notas frescas y acuáticas que evocan la sensación de la brisa marina y la libertad del océano.',
-  'Lattafa' => 'Lattafa ofrece una variedad de fragancias para hombres y mujeres, que van desde opciones dulces y afrutadas hasta fragancias más intensas y orientales. Sus perfumes suelen ser duraderos y cuentan con una excelente proyección, lo que los hace ideales para diversas ocasiones.',
-  "L'Bel_Bleu" => "L'Bel es una reconocida marca de cosméticos que ofrece una amplia gama de productos para el cuidado facial, corporal y capilar."
+  'Lattafa' => 'Las notas de salida son pimienta negra, tabaco y piña, las notas de corazón son pachulí, café y iris, las notas de fondo son vainilla, ámbar, Madera seca, benjuí y ládano.',
+  "Giorgio_Armani" => "La última fragancia refrescante y limpia, la colonia de este hombre se abre con un toque de fragancia marina: bergamota de Calabria, neroli y mandarina verde. Estos matices acuáticos se mezclan con romero, caqui y pachulí indonesio para crear una fragancia aromática fresca y relajada."
 }
 
 # Crear productos y adjuntar imágenes
