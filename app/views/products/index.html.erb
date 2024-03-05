@@ -75,9 +75,11 @@
               <%# Para reusar al momento de eliminar %>
             </div>
             <div style="margin-top: 10px;">
-              <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary d-inline p-2' %>
               <% if user_signed_in? && product.user_id == current_user.id %>
+                <%= link_to 'Observar', product_path(product), class: 'button_shop btn-primary d-inline p-2' %>
                 <%= link_to 'Eliminar', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌ ¿Estás seguro de que deseas eliminar este producto? ❌' }, class: 'button_shop btn-primary d-inline p-2'%>
+              <%else%>
+                <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary d-inline p-2' %>
               <% end %>
             </div>
 
