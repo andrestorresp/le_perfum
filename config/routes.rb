@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # Rutas de productos
   resources :products do
-    resources :reviews
+    resources :reviews, only: :create
     resources :checkouts, only: %i[new create]
   end
   resources :checkouts, except: %i[new create]

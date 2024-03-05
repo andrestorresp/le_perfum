@@ -1,5 +1,5 @@
 class CheckoutsController < ApplicationController
-  before_action :set_product, only: :destroy
+  before_action :set_product
   # before_action :set_product, only: %i[new create]
   def index
     @products = Product.all
@@ -34,6 +34,6 @@ class CheckoutsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
   end
 end

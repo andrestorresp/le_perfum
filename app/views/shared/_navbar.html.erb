@@ -29,7 +29,7 @@
           </li>
           <% end  %>
           <%if user_signed_in?  %>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown z-5">
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached? %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Editar perfil", edit_user_registration_path , class: "dropdown-item" %>
