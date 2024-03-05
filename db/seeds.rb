@@ -45,7 +45,6 @@ perfumes = [
   { name: 'Nautica_Voyage', image: 'Nautica_Voyage.jpg' },
   { name: 'Lattafa', image: 'Lattafa.jpg' },
   { name: "L'Bel_Bleu", image: "L'Bel_Bleu.jpg" }
-
 ]
 
 # Descripciones detalladas para cada perfume

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Mis Checkouts
+    </div>
+    <div class="card-body">
+      <% @user_checkouts.each do |checkout| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Checkout ID: <%= checkout.id %></h5>
+            <p class="card-text">Fecha de Transacción: <%= checkout.transaction_date %></p>
+            <p class="card-text">Precio: <%= checkout.price %></p>
+            <p class="card-text">Información de Referencia: <%= checkout.reference_info %></p>
+            <% if checkout.product %>
+              <p class="card-text">Nombre del Producto: <%= checkout.product.name %></p>
+            <% else %>
+              <p class="card-text">Producto no encontrado</p>
+            <% end %>
+            <% if checkout.photo.attached? %>
+              <%= image_tag checkout.photo, class: "img-fluid", alt: "Foto de Checkout" %>
+            <% else %>
+              <p class="card-text">No hay imagen disponible</p>
+            <% end %>
+            <!-- Otros campos del checkout que desees mostrar -->
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

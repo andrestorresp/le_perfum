@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   end
   resources :checkouts, except: %i[new create]
   # Ruta para la acción principal
+
+  get '/user_checkouts', to: 'checkouts#user_checkouts', as: 'user_checkouts'
+
+
 end
