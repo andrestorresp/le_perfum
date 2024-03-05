@@ -53,9 +53,14 @@
 </div>
 
 <div class="text-center mt-3">
+  <% if current_user && current_user.id != @product.user_id %>
   <button type="button" class="btn_comprar_ahora btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#comprarModal">
     Comprar ahora
   </button>
+  <% else %>
+    <%= link_to "Editar Producto", edit_product_path(@product), class: "button_comprar_ahora btn-primary btn-lg btn-block", data: { toggle: "modal", target: "#comprarModal" } %>
+  <% end %>
+
 </div>
 
 <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
@@ -76,6 +81,7 @@
             <input type="file" class="form-control" id="adjunto">
           </div>
           <button type="submit" class="btn btn-primary" onclick="mostrarAlerta()">Enviar Comprobante</button>
+
         </form>
       </div>
     </div>
