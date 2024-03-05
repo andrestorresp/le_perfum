@@ -72,7 +72,9 @@
               <strong><%= product.price %>💲</strong> 📍 <%=current_user.address%></h6>
 
               <%# Para reusar al momento de eliminar %>
-              <%# <%= link_to 'delete this product', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌¿Are you sure you want to delete this product?❌' }, class: 'btn btn-light' %>
+                <% if product.user_id == current_user.id %>
+                  <%= link_to 'Eliminar', product_path(product), data: { turbo_method: :delete, turbo_confirm: '❌ ¿Estás seguro de que deseas eliminar este producto? ❌' }, class: 'button_shop btn-primary' %>
+                <% end %>
             </div>
             <div style="margin-top: 10px;">
               <%= link_to 'Comprar', product_path(product), class: 'button_shop btn-primary' %>
