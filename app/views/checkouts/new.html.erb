@@ -1,21 +1,17 @@
-
 <div class="container">
   <div class="card">
     <div class="card-body">
       <%= form_with model: [@product, @checkout] do |form| %>
         <div class="form-inputs">
-
           <%= form.label :reference_info %>
           <%= form.text_field :reference_info, required: true, autofocus: true, class: "form-control" %>
-
           <%= form.file_field :photo, as: :file %>
         </div>
-
         <div class="form-actions text-center">
           <%= form.submit "Create Checkout", class: "btn btn-primary" %>
+          <%= link_to "Mis Checkouts", user_checkouts_path %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-

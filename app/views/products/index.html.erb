@@ -16,10 +16,14 @@
     <div class="row justify-content-center align-items-center py-3">
       <div class="col-md-6">
         <h1 class="text-light text-center mb-3">Bienvenido a Le Parfum</h1>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar productos..." aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Buscar</button>
-        </form>
+        <%= form_with url: products_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Buscar productos..."
+            %>
+          <%= submit_tag "Buscar", name: "", class: "btn btn-outline-light ms-3" %>
+        <% end %>
       </div>
     </div>
   </div>
