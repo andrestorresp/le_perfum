@@ -1,16 +1,6 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+Checkout.destroy_all
 User.destroy_all
 Product.destroy_all
-
-# db/seeds.rb
 
 # Usuario de Vendedores
 juan = User.create!(
@@ -45,7 +35,6 @@ perfumes = [
   { name: 'Nautica_Voyage', image: 'Nautica_Voyage.jpg' },
   { name: 'Lattafa', image: 'Lattafa.jpg' },
   { name: "L'Bel_Bleu", image: "L'Bel_Bleu.jpg" }
-
 ]
 
 # Descripciones detalladas para cada perfume

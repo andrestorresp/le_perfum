@@ -1,6 +1,10 @@
 class CheckoutsController < ApplicationController
+
   before_action :set_product
   # before_action :set_product, only: %i[new create]
+
+  before_action :authenticate_user!
+
   def index
     @products = Product.all
   end
@@ -11,21 +15,25 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-
     @checkout = Checkout.new(checkout_params)
     @checkout.user_id = current_user.id
     @checkout.transaction_date = Date.today
     @product = Product.find(params[:product_id])
     @checkout.product_id = @product.id
     @checkout.price = @product.price
-    if @checkout.save!
-      redirect_to checkout_path(@checkout)
+
+    if @checkout.save
+      redirect_to user_checkouts_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show; end
+
+  def user_checkouts
+    @user_checkouts = current_user.checkout
+  end
 
   private
 
