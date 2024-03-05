@@ -7,10 +7,9 @@
         </div>
       </div>
 
-
 <div class="col-md-6 aline align-self-center" style="height: 100%;">
   <div class="card card-shop h-100">
-    <div class="card-body" style="overflow-y: auto;">
+    <div class="card-body d-flex flex-column justify-content-between" style="overflow-y: auto;">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="d-flex align-items-center">
           <img src="<%= cl_image_path(current_user.photo.key) %>" class="rounded-circle me-3" alt="Foto de perfil" style="width: 40px; height: 40px; object-fit: cover;">
@@ -21,21 +20,18 @@
         </div>
         <%= link_to "<i class='fa-regular fa-circle-xmark fa-2x text-danger'></i>".html_safe, :back, class: "btnn btn-link" %>
       </div>
-      <!-- Añadir espacio -->
-      <!-- Fin espacio -->
+
       <div class="d-flex align-items-center">
         <div>
-          <h3 class="card-title fw-bold mb-0 me-3"><%= @product.name %></h3>
+          <h3 class="card-title fw-bold mb-0 me-3" style="overflow-wrap: break-word;"><%= @product.name %></h3>
         </div>
         <div class="ms-2">
-          <%# estrella %>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>
-          <%# estrella %>
         </div>
       </div>
       <p class="card-text text-align"><%= @product.description %></p>
@@ -49,12 +45,77 @@
           Contactar
         </button>
       </div>
+
+<div class="position-fixed top-0 start-0 w-100 alert-container d-none" style="z-index: 1000;">
+  <div class="alert alert-success" role="alert">
+    ¡Comprobante enviado correctamente!
+  </div>
+</div>
+
+<div class="text-center mt-3">
+  <button type="button" class="btn_comprar_ahora btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#comprarModal">
+    Comprar ahora
+  </button>
+</div>
+
+<div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="comprarModalLabel">Comprar Producto</h5>
+        <i class="fa-regular fa-circle-xmark fa-2x text-danger" data-bs-dismiss="modal" aria-label="Close"></i>
+      </div>
+      <div class="modal-body">
+        <form id="comprarForm" onsubmit="return false;">
+          <div class="mb-3">
+            <label for="referencia" class="form-label">Referencia</label>
+            <input type="text" class="form-control" id="referencia" required>
+          </div>
+          <div class="mb-3">
+            <label for="adjunto" class="form-label">Adjuntar archivo</label>
+            <input type="file" class="form-control" id="adjunto">
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="mostrarAlerta()">Enviar Comprobante</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const formulario = document.querySelector
+function mostrarAlerta() {
+  const referenciaInput = document.getElementById("referencia");
+  const adjuntoInput = document.getElementById("adjunto");
+
+  if (referenciaInput.value && adjuntoInput.files.length) {
+    // Mostrar alerta sobre el modal
+    document.querySelector(".alert-container").classList.remove("d-none");
+
+    // Cierra el modal después de 2 segundos
+    setTimeout(() => {
+      $('#comprarModal').modal('hide');
+      // Limpia los campos del formulario
+      adjuntoInput.reset();
+      referenciaInput.reset();
+      // Ocultar la alerta
+      document.querySelector(".alert-container").classList.add("d-none");
+    }, 20);
+  } else {
+    // Display an error message if any fields are empty
+    alert("Favor de completar todos los campos.");
+  }
+}
+</script>
+
+
+
       <!-- Modal de Contacto -->
       <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-dialog justify-content-center align-items-center">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="contactModalLabel ">Número de contacto</h5>
+              <h5 class="modal-title" id="contactModalLabel">Número de contacto</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -66,10 +127,10 @@
           </div>
         </div>
       </div>
-      <!-- Fin modal de Contacto -->
-    </div>
-    <div class="text-center mt-3">
-      <%= link_to "Comprar", new_product_checkout_path(@product), class: "btn_comprar_ahora btn-primary btn-lg btn-block", data: { toggle: "modal", target: "#comprarModal" } %>
     </div>
   </div>
+</div>
+</div>
+</div>
+</div>
 </div>
