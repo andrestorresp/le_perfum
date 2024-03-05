@@ -1,0 +1,19 @@
+.btn_comprar_ahora {
+  &.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff; // Texto blanco
+    text-decoration: none; // Quitar subrayado del texto
+
+    &:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  }
+
+  &.btn-block {
+    display: block;
+    margin: 20px auto 0; // Centrar horizontalmente y ajustar margen superior
+    width: 80%;
+  }
+}

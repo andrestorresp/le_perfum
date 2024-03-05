@@ -7,72 +7,69 @@
         </div>
       </div>
 
-      <div class="col-md-6 aline align-self-center" style="height: 100%;">
-        <div class="card card-shop h-100"> <!-- Añade la clase h-100 aquí -->
-          <div class="card-body" style=" display: grid; align-items: center;">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center">
-                <img src="<%= cl_image_path(current_user.photo.key) %>" class="rounded-circle me-3" alt="Foto de perfil" style="width: 40px; height: 40px; object-fit: cover;">
-                <h5 class="card-title mb-0">
-                  <%= current_user.email %>
-                  <i class="fa-solid fa-circle-check"></i>
-                </h5>
-              </div>
-              <%= link_to "<i class='fa-regular fa-circle-xmark fa-2x text-danger'></i>".html_safe, :back, class: "btnn btn-link" %>
-            </div>
-            <!-- Añadir espacio -->
-            <!-- Fin espacio -->
-            <div class="d-flex align-items-center">
-              <div>
-                <h3 class="card-title fw-bold mb-0 me-3"><%= @product.name %></h3>
-              </div>
-              <div class="ms-2">
-                <%# estrella %>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <%# estrella %>
-              </div>
-            </div>
-            <p class="card-text text-align"><%= @product.description %></p>
-            <p class="card-text fw-bold">Precio del Producto: </p>
-            <p class="card-text">USD <%= number_to_currency(@product.price) %></p>
-            <p class="card-text fw-bold">Ubicación del Vendedor: </p>
-            <p class="card-text"><%= current_user.address %></p>
-            <div class="d-flex align-items-center">
-              <button type="button" class="button btn-link" style="padding: 0;" data-bs-toggle="modal" data-bs-target="#contactModal">
-                <i class="fas fa-duotone fa-phone me-2"></i>
-                Contactar
-              </button>
-            </div>
-            <!-- Modal de Contacto -->
-            <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-              <div class="modal-dialog justify-content-center align-items-center">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel ">Número de contacto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <h5 class="card-title mb-0 text-center"><%= current_user.phone_number %></h5>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="button btn-link" data-bs-dismiss="modal">Cerrar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Fin modal de Contacto -->
-          </div>
-          <!-- Modal de Compra -->
-          <div style="margin-top: 30px;"></div>
-          <%= link_to "Comprar", new_product_checkout_path(@product), class: "button_comprar_ahora btn-primary", data: { toggle: "modal", target: "#comprarModal" } %>
-          <!-- Fin modal de Compra -->
+
+<div class="col-md-6 aline align-self-center" style="height: 100%;">
+  <div class="card card-shop h-100">
+    <div class="card-body" style="overflow-y: auto;">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex align-items-center">
+          <img src="<%= cl_image_path(current_user.photo.key) %>" class="rounded-circle me-3" alt="Foto de perfil" style="width: 40px; height: 40px; object-fit: cover;">
+          <h5 class="card-title mb-0">
+            <%= current_user.email %>
+            <i class="fa-solid fa-circle-check"></i>
+          </h5>
+        </div>
+        <%= link_to "<i class='fa-regular fa-circle-xmark fa-2x text-danger'></i>".html_safe, :back, class: "btnn btn-link" %>
+      </div>
+      <!-- Añadir espacio -->
+      <!-- Fin espacio -->
+      <div class="d-flex align-items-center">
+        <div>
+          <h3 class="card-title fw-bold mb-0 me-3"><%= @product.name %></h3>
+        </div>
+        <div class="ms-2">
+          <%# estrella %>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <%# estrella %>
         </div>
       </div>
+      <p class="card-text text-align"><%= @product.description %></p>
+      <p class="card-text fw-bold">Precio del Producto: </p>
+      <p class="card-text">USD <%= number_to_currency(@product.price) %></p>
+      <p class="card-text fw-bold">Ubicación del Vendedor: </p>
+      <p class="card-text"><%= current_user.address %></p>
+      <div class="d-flex align-items-center mb-3">
+        <button type="button" class="button btn-link" style="padding: 0;" data-bs-toggle="modal" data-bs-target="#contactModal">
+          <i class="fas fa-duotone fa-phone me-2"></i>
+          Contactar
+        </button>
+      </div>
+      <!-- Modal de Contacto -->
+      <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog justify-content-center align-items-center">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="contactModalLabel ">Número de contacto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5 class="card-title mb-0 text-center"><%= current_user.phone_number %></h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="button btn-link" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin modal de Contacto -->
+    </div>
+    <div class="text-center mt-3">
+      <%= link_to "Comprar", new_product_checkout_path(@product), class: "btn_comprar_ahora btn-primary btn-lg btn-block", data: { toggle: "modal", target: "#comprarModal" } %>
     </div>
   </div>
 </div>
