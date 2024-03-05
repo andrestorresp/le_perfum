@@ -1,48 +1,38 @@
 class CheckoutsController < ApplicationController
-  before_action :set_product, only: :destroy
-  # before_action :set_product, only: %i[new create]
+  before_action :authenticate_user!
+
   def index
     @products = Product.all
   end
 
   def new
-    @products = Product.new
+    @product = Product.find(params[:product_id])
+    @checkout = Checkout.new
   end
 
-  def show; end
-
   def create
-    @product = Product.new(product_params)
-    # @product.list = @list
-    if @product.save
-      redirect_to product_path(@product)
+    @checkout = Checkout.new(checkout_params)
+    @checkout.user_id = current_user.id
+    @checkout.transaction_date = Date.today
+    @product = Product.find(params[:product_id])
+    @checkout.product_id = @product.id
+    @checkout.price = @product.price
+    if @checkout.save
+      redirect_to user_checkouts_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit;end
+  def show; end
 
-  def update
-    if @product.update(product_params)
-      redirect_to product_path(@product)
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @product.destroy
-    redirect_to product_path, status: :see_other
+  def user_checkouts
+    @user_checkouts = current_user.checkout
   end
 
   private
 
-  def product_params
-    params.require(:product).permit(:name, :description, :price, :user_id)
-  end
-
-  def set_product
-    @product = Product.find(params[:id])
+  def checkout_params
+    params.require(:checkout).permit(:reference_info, :photo)
   end
 end

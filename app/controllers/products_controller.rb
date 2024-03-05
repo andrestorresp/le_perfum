@@ -1,9 +1,15 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_product, only: :destroy
   # before_action :set_product, only: %i[new create]
 
   def index
-    @products = Product.all
+    #@products = Product.all
+    if params[:query].present?
+      @products = Product.perfum_search(params[:query])
+    else
+      @products = Product.all
+    end
   end
 
   def new
@@ -12,6 +18,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @review = Review.new
   end
 
   def create

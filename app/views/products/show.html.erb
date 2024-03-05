@@ -1,18 +1,120 @@
-<div class="card-trip">
-  <div class="card">
-  <%= cl_image_tag @product.photo.key %>
-  </div>
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= @product.name %></h2>
-      <p><%= @product.description %></p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <div class="col-md-6 m-0">
+        <div class="card card-usuario"> <!-- Añade la clase h-100 aquí -->
+          <img src="<%= cl_image_path(@product.photo.key) %>" class="card-img-top" alt="...">
+        </div>
+      </div>
+
+      <div class="col-md-6 aline align-self-center" style="height: 100%;">
+        <div class="card card-shop h-100"> <!-- Añade la clase h-100 aquí -->
+          <div class="card-body" style=" display: grid; align-items: center;">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <img src="<%= cl_image_path(current_user.photo.key) %>" class="rounded-circle me-3" alt="Foto de perfil" style="width: 40px; height: 40px; object-fit: cover;">
+                <h5 class="card-title mb-0">
+                  <%= current_user.email %>
+                  <i class="fa-solid fa-circle-check"></i>
+                </h5>
+              </div>
+              <%= link_to "<i class='fa-regular fa-circle-xmark fa-2x text-danger'></i>".html_safe, :back, class: "btnn btn-link" %>
+            </div>
+            <!-- Añadir espacio -->
+            <!-- Fin espacio -->
+            <div class="d-flex align-items-center">
+              <div>
+                <h3 class="card-title fw-bold mb-0 me-3"><%= @product.name %></h3>
+              </div>
+              <div class="ms-2">
+                <%# estrella %>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <%# estrella %>
+              </div>
+            </div>
+            <p class="card-text text-align"><%= @product.description %></p>
+            <p class="card-text fw-bold">Precio del Producto: </p>
+            <p class="card-text">USD <%= number_to_currency(@product.price) %></p>
+            <p class="card-text fw-bold">Ubicación del Vendedor: </p>
+            <p class="card-text"><%= current_user.address %></p>
+            <div class="d-flex align-items-center">
+              <button type="button" class="button btn-link" style="padding: 0;" data-bs-toggle="modal" data-bs-target="#contactModal">
+                <i class="fas fa-duotone fa-phone me-2"></i>
+                Contactar
+              </button>
+            </div>
+            <!-- Modal de Contacto -->
+            <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+              <div class="modal-dialog justify-content-center align-items-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel ">Número de contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <h5 class="card-title mb-0 text-center"><%= current_user.phone_number %></h5>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="button btn-link" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin modal de Contacto -->
+          </div>
+          <!-- Modal de Compra -->
+          <div style="margin-top: 30px;"></div>
+          <% if current_user && current_user.id != @product.user_id %>
+            <%= link_to "Comprar", new_product_checkout_path(@product), class: "button_comprar_ahora btn-primary", data: { toggle: "modal", target: "#comprarModal" } %>
+          <% else %>
+            <%= link_to "Editar Producto", edit_product_path(@product), class: "button_comprar_ahora", data: { toggle: "modal", target: "#comprarModal" } %>
+          <% end %>
+          <!-- Fin modal de Compra -->
+        </div>
+      </div>
     </div>
-    <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" if current_user.photo.key? %>
-    Vendedor: <%= current_user.email %>
-    <h2 class="card-trip-pricing">Price: <%= number_to_currency(@product.price) %></h2>
-    <%= link_to "Editar", edit_product_path(@product), class: "btn btn-outline-primary" %>
-
-
   </div>
+</div>
 
 </div>
+</div>
+
+
+
+<hr class="">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h3 class="text-white">Reviews</h3>
+      <% if @product.reviews.empty? %>
+        <small><em class="text-white">Sé el primero en opinar acerca de este producto:</em></small>
+      <% end %>
+      <% @product.reviews.each do |review| %>
+        <div class="container">
+          <p class="text-white"><%= review.comment %></p>
+          <p class="text-white"><%= review.user.email %></p>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached? %>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Agregar opinión</h5>
+        <%= simple_form_for [@product, @review] do |f| %>
+          <%= f.input :comment, placeholder: "Agrega tu opinión aquí..." %>
+          <%= f.submit class:"btn btn-flat" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
