@@ -30,26 +30,29 @@ perfumes = [
   { name: 'Versace_Eros', image: 'Versace_Eros.jpg' },
   { name: 'Dolce_Gabbana', image: 'Dolce_Gabbana.jpg' },
   { name: 'Yves_Saint_Laurent', image: 'Yves_Saint_Laurent.jpg' },
-  { name: 'Valentino_Valentino_Assoluto', image: 'Valentino_Valentino_Assoluto.jpg' },
+  { name: 'Valentino_Assoluto', image: 'Valentino_Assoluto.jpg' },
   { name: 'Hugo_Boss_Bottled', image: 'Hugo_Boss_Bottled.jpg' },
   { name: 'Armaf_Club', image: 'Armaf_Club.jpg' },
   { name: 'Nautica_Voyage', image: 'Nautica_Voyage.jpg' },
   { name: 'Lattafa', image: 'Lattafa.jpg' },
   { name: "Giorgio_Armani", image: "Giorgio_Armani.jpg" }
+]
 
 # Descripciones detalladas para cada perfume
 descriptions = {
-  'Dior_Sauvage_Elixir' => 'Las notas de salida son canela, nuez moscada, cardamomo y toronja, la nota de corazón es lavanda, las notas de fondo son regaliz, sándalo, ámbar, pachulí y vetiver de Haití',
-  'Versace_Eros' => 'Dylan Blue pour femme es un tributo a la feminidad. Una fragancia intensa, sensual y refinada creada para una mujer que conoce el poder de su sensualidad y su mente. Mujeres femeninas, sexys con un fuerte poder de atracción, que dejan huella vayan dónde vayan. Esta fragancia nos aporta parte de Donatella Versace, de su seguridad y de su auto confianza.',
-  'Dolce_Gabbana' => 'Esta fragancia está diseñada para el hombre conceptual, sofisticado y masculino, que se desenvuelve en la ciudad sin pasar desapercibido. Pisa fuerte, con carácter y presencia cada día de su vida, lo mismo que su perfume, que plasma su esencia de manera auténtica y única.',
-  'Yves_Saint_Laurent' => 'El jugo de esta nueva fragancia es profundo, fresco, masculino y es un intenso fougère blanco, oscuro. Predomina una explosión olfativa de bergamota y jengibre la frescura es intensificada con las notas afrutadas de manzana verde. Seguido por una brisa suave de la salvia y el enebro, combinados con un toque de menta. El fondo de la fragancia resulta más intenso y masculino gracias a las maderas de ámbar, que refuerzan la misteriosa profundidad del olíbano y del haba tonka.',
-  'Valentino_Valentino_Assoluto' => 'Valentina, de la firma italiana Valentino, En ella, Valentino, quiere describir la esencia de la mujer que identifica su marca. Un perfil joven, elegante y con una pizca de rebeldia.',
-  'Hugo_Boss_Bottled' => 'La fragancia icónica de hombre a nivel mundial que captura la elegancia de un traje en un frasco. Es la fragancia que eligen los hombres seguros de sí mismos, elegantes, seductores y con espíritu dinámico.',
-  'Armaf_Club' => 'Armaf es una marca de fragancias que ofrece una amplia gama de perfumes para hombres y mujeres. La marca es conocida por ofrecer una variedad de fragancias de alta calidad a precios asequibles. Sus perfumes abarcan una variedad de estilos y notas aromáticas, desde frescos y florales hasta amaderados y orientales.',
-  'Nautica_Voyage' => 'Es una fragancia para hombres lanzada por la marca Nautica. Es conocida por su frescura y su aroma marino, inspirado en la navegación y la aventura en el mar. Esta fragancia se caracteriza por sus notas frescas y acuáticas que evocan la sensación de la brisa marina y la libertad del océano.',
-  'Lattafa' => 'Las notas de salida son pimienta negra, tabaco y piña, las notas de corazón son pachulí, café y iris, las notas de fondo son vainilla, ámbar, Madera seca, benjuí y ládano.',
-  "Giorgio_Armani" => "La última fragancia refrescante y limpia, la colonia de este hombre se abre con un toque de fragancia marina: bergamota de Calabria, neroli y mandarina verde. Estos matices acuáticos se mezclan con romero, caqui y pachulí indonesio para crear una fragancia aromática fresca y relajada."
+  'Dior_Sauvage_Elixir' => 'Las notas de salida son canela, nuez moscada, cardamomo y toronja, la nota de corazón es lavanda, las notas de fondo son regaliz.',
+  'Versace_Eros' => 'Dylan Blue pour femme es un tributo a la feminidad. Una fragancia intensa, sensual y refinada creada para una mujer la elegancia de su espíritu.',
+  'Dolce_Gabbana' => 'Esta fragancia está diseñada para el hombre conceptual, sofisticado y masculino.',
+  'Yves_Saint_Laurent' => 'El jugo de esta nueva fragancia es profundo, fresco, masculino y es un intenso fougère blanco, oscuro.',
+  'Valentino_Assoluto' => 'Valentina, de la firma italiana Valentino, En ella, Valentino, quiere describir la esencia de la mujer que identifica su marca.',
+  'Hugo_Boss_Bottled' => 'La fragancia icónica de hombre a nivel mundial que captura la elegancia de un traje en un frasco.',
+  'Armaf_Club' => 'Armaf es una marca de fragancias que ofrece una amplia gama de perfumes para hombres y mujeres.',
+  'Nautica_Voyage' => 'Es una fragancia para hombres lanzada por la marca Nautica. Es conocida por su frescura y su aroma marino.',
+  'Lattafa' => 'Las notas de salida son pimienta negra, tabaco y piña, las notas de corazón son pachulí, café y iris.',
+  "Giorgio_Armani" => "La última fragancia refrescante y limpia, la colonia de este hombre se abre con un toque de fragancia marina."
 }
+
+
 
 # Crear productos y adjuntar imágenes
 perfumes.each do |perfume|
