@@ -97,7 +97,7 @@
         <div class="container">
           <p class="text-white"><%= review.comment %></p>
           <p class="text-white"><%= review.user.email %></p>
-
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached? %>
         </div>
         <hr>
       <% end %>
@@ -118,4 +118,3 @@
 <hr>
 <hr>
 <hr>
-
