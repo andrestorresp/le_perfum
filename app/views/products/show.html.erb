@@ -90,21 +90,9 @@
     <div class="col-12 col-sm-6">
       <h3 class="card-header pb-3">Comentarios</h3>
       <% if @product.reviews.empty? %>
-
-        <small><em class="">Sé el primero en opinar acerca de este producto</em></small>
-
         <small><em class="text-white">Sé el primero en opinar acerca de este producto:</em></small>
       <% end %>
       <% @product.reviews.each do |review| %>
-        <div class="container">
-          <p class="text-white"><%= review.comment %></p>
-          <p class="text-white"><%= review.user.email %></p>
-          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached? %>
-        </div>
-        <hr>
-
-      <% end %>
-        <% @product.reviews.each do |review| %>
           <div class="container form_card align-items-center justify-center pt-3">
             <p>"<%= review.comment %>"</p>
             <h5><strong>- <%= review.user.email %></strong></h5>
@@ -130,4 +118,3 @@
 <hr>
 <hr>
 <hr>
-
