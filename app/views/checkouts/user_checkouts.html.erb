@@ -17,7 +17,7 @@
               <p class="card-text">Producto no encontrado</p>
             <% end %>
             <% if checkout.photo.attached? %>
-              <%= image_tag checkout.photo, class: "img-fluid", alt: "Foto de Checkout" %>
+              <%= image_tag checkout.photo, class: "img-fluid", alt: "Foto de Checkout", width: "300", height: "200" %>
             <% else %>
               <p class="card-text">No hay imagen disponible</p>
             <% end %>

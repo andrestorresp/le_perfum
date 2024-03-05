@@ -18,7 +18,7 @@ class CheckoutsController < ApplicationController
     @checkout.price = @product.price
 
     if @checkout.save
-      redirect_to checkout_path(@checkout)
+      redirect_to user_checkouts_path
     else
       render :new, status: :unprocessable_entity
     end
